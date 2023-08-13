@@ -20,4 +20,11 @@ app.post("/authenticate", async (req, res) => {
   }
 });
 
-app.listen(3001);
+// Catch-all route for any other routes
+app.use((req, res) => {
+  res.status(404).json({ message: "Route not found" });
+});
+
+app.listen(3001, () => {
+  console.log("Server is running on port 3001");
+});
